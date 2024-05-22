@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastWay</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Moirai+One&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,500;1,600;1,700;1,800;1,900&family=Pacifico&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/912e452282.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    
+    
+    <!--needs to be a partial-->
+    <div class="flash-message">
+        <% if(messages.error && messages.error.length>0){ %>
+            <% messages.error.forEach((err)=>{ %>
+                <div class="error-msg">
+                    <i class="fa fa-circle-exclamation"></i> <%= err %>
+                </div>
+            <% }) %>
+            
+        <% } %>
+
+        <% if(messages.success && messages.success.length>0){ %>
+            <% messages.success.forEach((msg)=>{ %>
+                <div class="success-msg">
+                    <i class="fa fa-circle-exclamation"></i> <%= msg %>
+                </div>
+            <% }) %>
+        <%}%>
+    </div>
+
+    <div class="form-container">
+        <div class="form-header">
+            <p>Sign Up</p>
+        </div>
+
+        <form action="/app/fastway/account/create" method="POST">
+            <div class="form-section">
+                <label for="email">Email <sup class="important-sign">*</sup></label>
+                <br>
+                <input type="email" name="email" id="email" placeholder="e.g. jamesanto@mail.com">
+            </div>
+
+            <div class="form-section">
+                <label for="firstName">First Name <sup class="important-sign">*</sup></label>
+                <br>
+                <input type="text" name="firstName" id="firstName" placeholder="e.g. James">
+            </div>
+
+            <div class="form-section">
+                <label for="lastName">Last Name <sup class="important-sign">*</sup></label>
+                <br>
+                <input type="text" name="lastName" id="lastName" placeholder="e.g. Antony">
+            </div>
+
+            <div class="form-section">
+                <label for="username">Username <sup class="important-sign">*</sup></label>
+                <br>
+                <input type="text" name="username" id="username" placeholder="e.g. james_anto">
+            </div>
+
+            <div class="form-section">
+                <label for="country">Country <sup class="important-sign">*</sup></label>
+                <br>
+                <select name="country" id="country">
+                    <option value="Kenya">Kenya</option>
+                    <option value="Uganda">Uganda</option>
+                    <option value="Nigeria">Nigeria</option>
+                </select>
+            </div>
+
+            <div class="form-section">
+                <label for="phoneNumber">Phone Number <sup class="important-sign">*</sup></label>
+                <br>
+                <input type="text" name="phoneNumber" id="phoneNumber" placeholder="e.g. 254758902499">
+            </div>
+
+            <div class="form-section">
+                <label for="customerType">Customer Type <sup class="important-sign">*</sup></label>
+                <br>
+                <select name="customerType" id="customerType">
+                    <option value="seller">I want to sell services.</option>
+                    <option value="buyer">I want to buy services.</option>
+                    
+                </select>
+            </div>
+
+            <div class="form-section">
+                <label for="walletAddress">Wallet Address <sup class="important-sign">*</sup></label>
+                <br>
+                <input type="password" name="walletAddress" id="walletAddress" placeholder="e.g. 0x09Ab...93I0c">
+            </div>
+
+            <div class="form-section">
+                <label for="privateKey">Private Key <sup class="important-sign">*</sup></label>
+                <br>
+                <input type="password" name="privateKey" id="privateKey" placeholder="e.g.bdf53...fba83">
+            </div>
+
+            <div class="form-section">
+                <label for="password">Password <sup class="important-sign">*</sup></label>
+                <br>
+                <input type="password" name="password" id="password" placeholder="Create password here">
+            </div>
+
+            <!--add company-section divider-->
+            <div class="form-section">
+                <label for="imageUrl">Company Building Image</label>
+                <br>
+                <input type="text" name="imageUrl" id="imageUrl" placeholder="e.g. https://example.com/image.png">
+            </div>
+
+            <div class="form-section">
+                <label for="desc">Company Bio</label>
+                <br>
+                <input type="text" name="desc" id="desc" placeholder="Write something about your company.">
+            </div>
+
+            <div class="form-section">
+                <label for="services">List Services</label>
+                <br>
+                <input type="text" name="services" id="services" placeholder="e.g. T-shirt, Catering, Mugs">
+            </div>
+
+            <div class="form-section">
+                <label for="address">Address</label>
+                <br>
+                <input type="text" name="address" id="address" placeholder="e.g. 123 Eldama, Wessex, City">
+            </div>
+
+            <div class="form-section">
+                <label for="type"> Company Type/ Industry</label>
+                <br>
+                <select name="type" id="type">
+                    <option value="Technology">Tech</option>
+                    <option value="Restaurant">Hotels and Hospitality</option>
+                    <option value="Finance">Coorporate</option>
+                </select>
+            </div>
+
+            <div class="form-section">
+                <button type="submit">Create Account</button>
+            </div>
+
+           
+
+        </form>
+    </div>
+   
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastWay</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Moirai+One&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,500;1,600;1,700;1,800;1,900&family=Pacifico&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/912e452282.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <div class="top-container">
+        <div class="top-area">
+            <div class="menu">
+                <i class="fa fa-bars"></i>
+            </div>
+            <div class="wallet-balance">
+                <p class="balance-box">$ <%= balances.cUSD_Bal %> cUSD</p>
+            </div>
+            <div class="wallet-address">
+                <p><i class="fa fa-circle-check"></i> <%= walletAddr %></p>
+            </div>
+        </div>
+
+        <div class="profile-status-box">
+            <div class="logo-image-container">
+                <img src="/pictures/logo.png" alt="">
+            </div>
+            <div class="profile-content">
+                <div class="profile-name">Hi, <%= person.firstName %></div>
+
+                <div class="profile-balances">
+                    <div class="balances">
+                        <div class="balance-logo"><img src="/pictures/celo.jpeg" alt=""></div>
+                        <div class="balance-value">CELO <%= balances.CELO_Bal %></div>
+                    </div>
+
+                    <div class="balances">
+                        <div class="balance-logo"><img src="/pictures/cusd.png" alt=""></div>
+                        <div class="balance-value">$ <%= balances.cUSD_Bal %></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--needs to be a partial-->
+    <div class="flash-message">
+        <% if(messages.error && messages.error.length>0){ %>
+            <% messages.error.forEach((err)=>{ %>
+                <div class="error-msg">
+                    <i class="fa fa-circle-exclamation"></i> <%= err %>
+                </div>
+            <% }) %>
+            
+        <% } %>
+
+        <% if(messages.success && messages.success.length>0){ %>
+            <% messages.success.forEach((msg)=>{ %>
+                <div class="success-msg">
+                    <i class="fa fa-circle-exclamation"></i> <%= msg %>
+                </div>
+            <% }) %>
+        <%}%>
+    </div>
+
+    
+
+    <div class="logo-container">
+       <%if(person.customerType=="buyer"){%>
+        <div class="logo-head">
+          
+        </div>
+        <div class="logo-text">
+            <form action="/app/fastway/invoice-processing" method="POST" enctype="multipart/form-data">
+                <div class="custom-file-label" id="customFileLabel">
+                    <h1><i class="fa fa-file-circle-plus"></i></h1>
+                    <p>Invoice - .png, .pdf, .jpg</p>
+                </div>
+                <input type="file" name="invoice_form" id="invoice_form">
+                <button type="submit">Process</button>
+            </form>
+        </div>
+       <%}else{%>
+            <div class="logo-head seller">
+
+            </div>
+       <%}%>
+    </div>
+
+    <script>
+        document.getElementById('customFileLabel').addEventListener('click', function() {
+            document.getElementById('invoice_form').click();
+        });
+
+        document.getElementById('invoice_form').addEventListener('change', function() {
+            const fileName = this.files[0] ? this.files[0].name : 'No file chosen'
+           //check for return 
+           if(fileName==='No file chosen'){
+            document.getElementById('customFileLabel').innerHTML = 
+            `
+                    <h1><i class="fa fa-circle-xmark" style="color:#ffb3b3;"></i></h1>
+                    <p>${fileName}.</p> 
+            `;
+           }else{
+            document.getElementById('customFileLabel').innerHTML = 
+            `
+                    <h1><i class="fa fa-circle-check"></i></h1>
+                    <p>${fileName} chosen.</p> 
+            `;
+           }
+        });
+    </script>
+</body>
+</html>
