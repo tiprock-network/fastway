@@ -7,10 +7,13 @@ This project works on creating awesome experiences in invoicing of services, wit
 <br/>
 
 ## Technologies Used
-<img src="./app/public/pictures/celo.jpeg" style="height:50px; width:50px;" alt="" /> 
-<img src="./app/public/pictures/node.png" style="height:50px; width:50px; margin-left:15px;" alt="" /> 
-<img src="./app/public/pictures/solidity.svg" style="height:50px; width:50px; margin-left:15px;" alt="" />
-<img src="./app/public/pictures/azure.png" style="height:50px; width:50px; object-fit:contain; margin-left:15px;" alt="" /> 
+<div style="display:flex; flex-direction:row;">
+    <img src="./app/public/pictures/celo.jpeg" style="height:50px; width:50px;" alt="" /> 
+    <img src="./app/public/pictures/node.png" style="height:50px; width:50px; margin-left:15px;" alt="" /> 
+    <img src="./app/public/pictures/solidity.svg" style="height:50px; width:50px; margin-left:15px;" alt="" />
+    <img src="./app/public/pictures/azure.png" style="height:50px; width:50px; object-fit:contain; margin-left:15px;" alt="" /> 
+</div>
+
 
 ## Introduction
 The average small-to-mid-sized company takes about 25 days to process a single invoice manually from receipt to payment. Because of this, the transaction cycle and process of paying an invoice can take weeks when it actually shouldn't take any longer than a day or two to complete. 
