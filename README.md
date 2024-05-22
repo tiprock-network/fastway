@@ -1,6 +1,8 @@
-<img src="./app/public/pictures/full_logo.png" alt="" /> <sup style="background-color:#e44040; padding:2px; font-weight:600;">v1.0.0</sup>
+<img src="./app/public/pictures/full_logo.png" alt="" /> <sup style="background-color:red; padding:2px; font-weight:600;">v1.0.0</sup>
 
-# Fast Way <sub style="font-size:12px; font-weight:400;"> by Theophilus Owiti</sub>
+# Fast Way 
+<sub style="font-size:12px; font-weight:400;"> by Theophilus Owiti</sub>
+
 <b>Work faster . Deliver Better</b>
 
 This project works on creating awesome experiences in invoicing of services, with less restriction implemented via CELO to allow anybody any where to receive funds easily eradicating long bank invoice payments periods. You simply add your company to the chain and the customer will easily pay their invoice through a fast invoice process with using Azure AI Document Analysis OCR Service.
