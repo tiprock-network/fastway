@@ -6,7 +6,7 @@
 <b>Work faster . Deliver Better</b>
 
 <div style="display:flex; flex-direction:row;">
-    <img src="./app/public/pictures/fastway-home.png" style="height:400px; width:200px; object-fit:contain;" alt="" /> 
+    <img src="./app/public/pictures/fastway-home.png" style="height:400px; width:200px; object-fit:contain; border-radius:12px;" alt="" /> 
 </div>
 
 This project works on creating awesome experiences in invoicing of services, with less restriction implemented via CELO to allow anybody any where to receive funds easily eradicating long bank invoice payments periods. You simply add your company to the chain and the customer will easily pay their invoice through a fast invoice process with using Azure AI Document Analysis OCR Service.
