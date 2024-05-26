@@ -25,6 +25,11 @@ This project works on creating awesome experiences in invoicing of services, wit
 The average small-to-mid-sized company takes about 25 days to process a single invoice manually from receipt to payment. Because of this, the transaction cycle and process of paying an invoice can take weeks when it actually shouldn't take any longer than a day or two to complete. 
 Most businesses rely on invoices that are sent to banks and can often be slow in processing and maybe rejected most of the time. This project aims at using CELO for faster, accurate and cross-border disbursement of funds between businesses using invoices.
 
+## Table of Contents
+- [Getting Started](#getting-started)
+
+<a id="getting-started"></a>
+
 ## 1. Getting started
 ### 1.1 Requirements
 * Install Cello Wallet Chrome Extension

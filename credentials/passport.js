@@ -57,7 +57,7 @@ module.exports = (passport) => {
         try {
             await connectToMongoDB();
             const account_collection = await getCollection();
-            let user = await account_collection.findOne({ _id: new ObjectId(id) }, { projection: { username: 1, firstName:1, lastName:1, userEmail: 1, phone: 1, userPassword: 1, customerType:1 } });
+            let user = await account_collection.findOne({ _id: new ObjectId(id) });
             
             if (user) {
                 done(null, user);

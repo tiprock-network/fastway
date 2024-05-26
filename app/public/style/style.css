@@ -203,6 +203,12 @@ body{
     margin-bottom: 20px;
 }
 
+.top-container>.companies-status-box{
+    background: url('../pictures/form-background.png');
+    background-size: cover;
+    
+}
+
 .top-container>.invoice-box-status{
     background-color: #fff;
     margin-top: 20px;
@@ -304,7 +310,20 @@ body{
     width: fit-content;
 }
 
+.top-container>.profile-status-box>.profile-content>.company-address>#companyAddr{
+    font-size: 16px;
+    padding: 10px;
+    padding-left: 0;
+}
 
+.top-container>.profile-status-box>.profile-content>.company-address{
+    color: #fff;
+}
+
+.top-container>.profile-status-box>.profile-content>.company-name>a{
+    text-decoration: none;
+    color: #fff;
+}
 
 .top-container>.profile-status-box>.logo-image-container{
     /*border: 1px solid red;*/
@@ -502,6 +521,84 @@ body{
 .fa-bars{
     color: #fff;
     font-size: 16px;
+}
+
+.check-out-container{
+    /*border: 1px solid #ccc;*/
+    border-radius: 12px;
+    width: 70%;
+    transform: translate(15%,-54vh);
+    position: absolute;
+    padding: 10px;
+    
+}
+
+.check-out-container> form> .form-section{
+    margin-bottom: 12px;
+}
+
+.check-out-container> form> .form-section>label{
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    font-family: "Montserrat", sans-serif;
+}
+
+.check-out-container> form> .form-section>select{
+    margin-top: 10px;
+    border: none;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    outline: none;
+    font-size: 10px;
+    font-family: "Montserrat", sans-serif;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    font-weight: 500;
+    text-transform: lowercase;
+    color: #444;
+    border: 1px solid #ccc;
+    appearance: none;
+}
+
+.check-out-container> form> .form-section>input{
+    margin-top: 10px;
+    border: none;
+    width: 90%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    outline: none;
+    font-size: 10px;
+    font-family: "Montserrat", sans-serif;
+    background-color: #e2e2e2;
+    border-radius: 10px;
+    font-weight: 500;
+    text-transform: lowercase;
+    color: #444;
+    border: none;
+}
+
+.check-out-container> form> .form-section>button{
+    margin-top: 10px;
+    border: none;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    outline: none;
+    font-size: 15px;
+    font-family: "Montserrat", sans-serif;
+    background-color: rgb(60, 194, 127);
+    border-radius: 10px;
+    font-weight: 500;
+    color: #fff;
+    border: none;
 }
 
 

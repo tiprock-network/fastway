@@ -4,5 +4,6 @@ module.exports = db_metadata ={
     db_name:process.env.DB_NAME,
     user_collection:process.env.USER_COLLECTION,
     company_collection:process.env.COMPANY_COLLECTION,
-    items_collection:process.env.ITEM_COLLECTION
+    items_collection:process.env.ITEM_COLLECTION,
+    payments_collection:process.env.PAYMENTS_COLLECTION
 }

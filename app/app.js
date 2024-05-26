@@ -9,11 +9,16 @@ const upload = multer({dest:'./uploads'})
 const {addUser,signInUser,logOutUser} = require('../controllers/user_account_controller')
 const {MongoClient,ObjectId} = require('mongodb')
 const connectToMongoDB = require('../functions/connectToMongoDB')
+const companyLister = require('../functions/listCompaniesFromChain')
 const databaseInfo = require('../credentials/db_metadata')
 //mongobd client
 const mongo_client = new MongoClient(databaseInfo.mongo_uri)
 const account_collection = mongo_client.db(databaseInfo.db_name).collection(databaseInfo.user_collection)
 const invoices_collection = mongo_client.db(databaseInfo.db_name).collection(databaseInfo.items_collection)
+const Web3 = require('web3')
+const abi = require('../smartcontract/abi')
+const contractAddress = process.env.CONTRACT_ADDRESS
+
 //connect to mongodb
 connectToMongoDB()
 
@@ -111,9 +116,21 @@ router.post('/account/create', addUser)
     .post('/account/logout',ensureAuthenticated,logOutUser)
 
 router.post('/invoice-processing', ensureAuthenticated,upload.single('invoice_form'),require('../controllers/invoice_controller'))
+
 router.get('/list/companies', async(req,res)=>{
-    
+    const web3_instance = new Web3(new Web3.providers.HttpProvider(process.env.ALFAJORES_TESTNET))
+    const contract = new web3_instance.eth.Contract(abi,contractAddress)
+    let companies = await contract.methods.fetchAllCompanies().call()
+    let fields = ['address','name','image_url','desc','list','email','phone','street_address']
+    /*console.log(companies)*/
+    let company_list = companyLister(companies,fields)
+    //add minipay kit to display balance and address
+    res.render('companies',{companiesList:company_list})
+
 })
+
+router.get('/list/companies/account/pay/:id', ensureAuthenticated,require('../controllers/transferInvoice'))
+router.post('/list/companies/account/pay/checkout', ensureAuthenticated,require('../controllers/finalize-transfer'))
 
 
 module.exports = router

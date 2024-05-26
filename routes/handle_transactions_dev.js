@@ -11,13 +11,13 @@ const convertToFloat = require('../functions/convertToFloat')
 
 router.post('/send', async (req,res) => {
     //get the receiver's address
-    const {receiver_addr, amount} = req.body
+    const {receiver_addr, sender_pKey, sender_addr, amount} = req.body
     //returns an object for account details
-    let sender_acc = await getAccount()
-
+    //let sender_acc = await getAccount() - removed after sender_pKey and sender_addr introduced
+    //console.log(req.body)
     // Add sender private key
     //THIS MUST BE DONE **** MOST IMPORTANT LINE OF ALL*****
-    await kit.connection.addAccount(sender_acc.privateKey)
+    await kit.connection.addAccount(sender_pKey)
 
     //get celo token wrappers
     let celoToken = await kit.contracts.getGoldToken()
@@ -26,7 +26,7 @@ router.post('/send', async (req,res) => {
       
      //send funds
      let cUSDtx = await cUSDToken.transfer(receiver_addr, amount).send({
-         from:sender_acc.address,
+         from:sender_addr,
          feeCurrency:cUSDToken.address
      })
  
@@ -35,8 +35,8 @@ router.post('/send', async (req,res) => {
      let receipt  = await cUSDtx.waitReceipt()
      
      //get account balance
-     let celo_crude_bal = await celoToken.balanceOf(sender_acc.address)
-     let cUSD_crude_bal = await cUSDToken.balanceOf(sender_acc.address)
+     let celo_crude_bal = await celoToken.balanceOf(sender_addr)
+     let cUSD_crude_bal = await cUSDToken.balanceOf(sender_addr)
      let celo_sender_acc_bal = convertToFloat(celo_crude_bal).toString()
      let cUSD_sender_acc_bal = convertToFloat(cUSD_crude_bal).toString()
  
