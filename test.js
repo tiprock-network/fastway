@@ -8,6 +8,10 @@ require('dotenv').config()
     // sample document
     invoiceUrl = "https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-invoice.pdf"
 
+    //date
+    let  a = new Date()
+    let year = a.getFullYear()
+
 async function main() {
 
     const client = DocumentIntelligenceClient(endpoint, {key: key},

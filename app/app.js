@@ -15,6 +15,7 @@ const databaseInfo = require('../credentials/db_metadata')
 const mongo_client = new MongoClient(databaseInfo.mongo_uri)
 const account_collection = mongo_client.db(databaseInfo.db_name).collection(databaseInfo.user_collection)
 const invoices_collection = mongo_client.db(databaseInfo.db_name).collection(databaseInfo.items_collection)
+const payments_collection = mongo_client.db(databaseInfo.db_name).collection(databaseInfo.payments_collection)
 const Web3 = require('web3')
 const abi = require('../smartcontract/abi')
 const contractAddress = process.env.CONTRACT_ADDRESS
@@ -42,7 +43,8 @@ router.get('/home',ensureAuthenticated, async (req,res) => {
     //consume REST API endpoint
     let walletAddr = formatCryptoAddr(user_addr.walletAddress)
     
-    axios.post(URL,payload)
+    if(req.user.customerType == 'buyer'){
+        axios.post(URL,payload)
         .then((response)=>{
             //get balance data
             let response_body_bal = response.data?response.data:{}
@@ -60,6 +62,31 @@ router.get('/home',ensureAuthenticated, async (req,res) => {
 
         })
         .catch(error=>console.log(`Error making POST request: ': ${error}`))
+    }else{
+        //get payments
+        let payments = await payments_collection.find({receiverAddr:req.user.walletAddress}).toArray()
+        
+        axios.post(URL,payload)
+        .then( (response) =>{
+            //get balance data
+            let response_body_bal = response.data?response.data:{}
+            //formatted balance
+            let formatted_balances={
+                CELO_Bal: parseFloat(response_body_bal.CELO_Bal).toFixed(2).toString(),
+                cUSD_Bal: parseFloat(response_body_bal.cUSD_Bal).toFixed(2).toString(),
+            }
+            
+            res.render('seller-dash',{ 
+                walletAddr:walletAddr,
+                balances:formatted_balances,
+                person:req.user,
+                payments:payments,
+                messages: req.flash()
+            })
+
+        })
+        .catch(error=>console.log(`Error making POST request: ': ${error}`))
+    }
 })
 
 router.get('/account/list/invoices', ensureAuthenticated, async (req, res) => {
