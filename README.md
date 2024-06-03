@@ -1,4 +1,4 @@
-<img src="./app/public/pictures/full_logo.png" alt="" /> <sup style="background-color:red; padding:2px; font-weight:600;">v1.0.0</sup>
+<img src="./app/public/pictures/small-logo.png" alt="" /> <sup style="background-color:red; padding:2px; font-weight:600;">v1.0.0</sup>
 
 # Fast Way 
 <sub style="font-size:12px; font-weight:400;"> by Theophilus Owiti</sub>
