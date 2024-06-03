@@ -30,63 +30,18 @@ function formatCryptoAddr(addr){
     return `${first_part}...${last_part}`
 }
 
-router.get('/home',ensureAuthenticated, async (req,res) => {
-    //get wallet balance
-    //TODO: TEST CASE & try catch
-    let user_addr = await account_collection.findOne({_id:new ObjectId(req.user._id)})
-    
-    const URL = process.env.CELO_BALANCE_ENDPOINT
-    
-    const payload = {
-        addr:user_addr.walletAddress
-    }
-    //consume REST API endpoint
-    let walletAddr = formatCryptoAddr(user_addr.walletAddress)
-    
-    if(req.user.customerType == 'buyer'){
-        axios.post(URL,payload)
-        .then((response)=>{
-            //get balance data
-            let response_body_bal = response.data?response.data:{}
-            //formatted balance
-            let formatted_balances={
-                CELO_Bal: parseFloat(response_body_bal.CELO_Bal).toFixed(2).toString(),
-                cUSD_Bal: parseFloat(response_body_bal.cUSD_Bal).toFixed(2).toString(),
-            }
-            
-            res.render('index',{ 
-                walletAddr:walletAddr,
-                balances:formatted_balances,
-                person:req.user,
-                messages: req.flash()})
+//new imports for view with minipay
+const {createPublicClient,http} = require('viem')
+const {mainnet} = require('viem/chains')
+const client = createPublicClient({
+    chain:mainnet, //define network
+    transport: http()
+})
 
-        })
-        .catch(error=>console.log(`Error making POST request: ': ${error}`))
-    }else{
-        //get payments
-        let payments = await payments_collection.find({receiverAddr:req.user.walletAddress}).toArray()
-        
-        axios.post(URL,payload)
-        .then( (response) =>{
-            //get balance data
-            let response_body_bal = response.data?response.data:{}
-            //formatted balance
-            let formatted_balances={
-                CELO_Bal: parseFloat(response_body_bal.CELO_Bal).toFixed(2).toString(),
-                cUSD_Bal: parseFloat(response_body_bal.cUSD_Bal).toFixed(2).toString(),
-            }
-            
-            res.render('seller-dash',{ 
-                walletAddr:walletAddr,
-                balances:formatted_balances,
-                person:req.user,
-                payments:payments,
-                messages: req.flash()
-            })
-
-        })
-        .catch(error=>console.log(`Error making POST request: ': ${error}`))
-    }
+router.get('/home', async (req,res) => {
+   // const address = await client.getBalance()
+    //console.log(address)
+    res.render('index')
 })
 
 router.get('/account/list/invoices', ensureAuthenticated, async (req, res) => {

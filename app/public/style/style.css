@@ -3,631 +3,291 @@
     margin: 0;
 }
 
-html{
-    background: url('../pictures/form-background.png');
-    background-size: cover;
-    overflow-x: hidden;
-}
-
 body{
     overflow-x: hidden;
     font-size: 14px;
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
     background-repeat: no-repeat;
-    
+    color: #444;
 }
 
-.top-container{
-    border: none;
-    height: 40vh;
-    width:100% ;
-    background: url('../pictures/background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.invoice-cover-bg{
-    
-    height: 250vh;
-    background: #fff;
-    
-}
-
-.top-container>.top-area{
-    display: grid;
-    grid-template-columns: 20% 40% 30%;
-    
-}
-
-.top-container>.top-area>div{
-    padding: 10px;
-    border: none;
-    font-size: 12px;
-}
-
-.top-container>.top-area>div>p{
-    padding: 10px;
-    border: none;
-    font-size: 12px;
-}
-
-.balance-box{
-    background: #92b5ff93;
-    border: none;
-    backdrop-filter: blur(8px);
-    padding: 5px;
-    border-radius: 25px;
-    color: #fff;
-}
-
-.success-msg{
-    width: 70%;
-    transform: translateX(20%);
-    background-color: #e7fff5;
-    color: #338f69;
-    margin-top: 10px;
-    font-weight: 500;
-    font-size: 12px;
-    font-family: "Montserrat", sans-serif;
-    border: none;
-    border-radius: 8px;
-    padding: 10px;
-}
-
-.error-msg{
-    width: 70%;
-    transform: translateX(20%);
-    background-color: #fceded;
-    color: #df4d4d;
-    margin-top: 10px;
-    font-weight: 500;
-    font-size: 12px;
-    font-family: "Montserrat", sans-serif;
-    border: none;
-    border-radius: 8px;
-    padding: 10px;
-}
-
-
-
-.wallet-balance{
-    text-align: center;
-}
-
-.wallet-address{
-    color: #5f72d1;
-    font-weight: 700;
-}
-
-.fa-circle-check{
-    color: #67d1a5;
-}
-
-.fa-basket-shopping{
-    font-size: 16px;
-}
-
-.logo-container{
-    
-    transform: translateX(5%);
-    width: 80%;
-    padding: 10px 20px;
-    /*box-shadow: 0px 2px 4px 0px #ccc;*/
-    
-}
-
-
-
-.logo-container>.logo-text{
-    font-weight: 600;
-    /*background: url('../pictures/form-background.png');*/
-    font-size: 14px;
+.header{
     width: 100%;
+    /*border: 1px solid red;*/
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-.logo-container>.logo-text>form>input[type="file"]::file-selector-button{
-    /*border: 1px solid #4D5A9F;*/
-    background: url('../pictures/form-background.png');
-    background-size: cover;
-    font-family: "Montserrat", sans-serif;
-    font-size: 16px;
-    color: #fff;
-    font-weight: 500;
-    padding: 10px;
-    border-radius: 25px;
-    margin-top: 25px;
-}
-
-.logo-container>.logo-text>form>input[type="file"]{
-    display: none;
-}
-
-.logo-container>.logo-text>form>.custom-file-label{
-    text-align: center;
-    padding: 18px;
-    width: 80%;
-    height: 150px;
-    transform: translateX(5%);
-    background: #bfcafa3f;
-    backdrop-filter: blur(10px);
-    color: #d4dbff;
-    border: none;
-    border-radius: 12px;
-    /*background-color: #e2e6fc;*/
-    /*border-radius: 20px;*/
-    margin-top: 20px;
-}
-
-.logo-container>.logo-text>form>.custom-file-label>h1{
-    margin-top: 15px;
-    font-size: 50px;
-}
-
-.logo-container>.logo-head{
-    color: #fff;
-    background: #b8c4f83f;
+.header> .logo{
     height: 50px;
-    border: none;
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
-    font-weight: 700;
-    font-size: 30px;
-}
-
-
-.logo-container>.logo-text>form>button{
-    background-color: #4462f875;
-    color: #fff;
-    border: none;
-    border-radius: 15px;
-    backdrop-filter: blur(5px);
-    font-family: "Montserrat", sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    padding: 10px;
-    margin-top: 25px;
-    margin-left: 15px;
-    width: 90%;
-}
-
-.top-container>.profile-status-box{
-    height: 180px;
-    background-color: #778eff8f;
-    color: #fff;
-    border: none;
-    border-radius: 15px;
-    backdrop-filter: blur(2px);
-    width: 80%;
-    transform: translateX(13%);
-    margin-bottom: 20px;
-}
-
-.top-container>.companies-status-box{
-    background: url('../pictures/form-background.png');
-    background-size: cover;
-    
-}
-
-.top-container>.invoice-box-status{
-    background-color: #fff;
-    margin-top: 20px;
-    border-radius: 8px;
-    box-shadow: 2px 2px 4px 1px #e7e7e7;
-}
-
-
-.top-container>.profile-status-box>.profile-content{
+    width: 150px;
     /*border: 1px solid red;*/
-    
+    margin-left: 10px;
 }
 
-.top-container>.profile-status-box>.profile-content>.profile-name{
-    font-weight: 800;
-    font-size: 16px;
-    /*border: 1px solid red;*/
-    width: 50%;
-    margin-left: 15px;
-    padding: 10px;
+.header> .logo> img{
+    height: 50px;
+    width: 150px;
+    object-fit: contain;
 }
 
-.top-container>.profile-status-box>.profile-content>.invoice-section-profile{
-    width: 80%;
-    color: #5d6ebe;
-    font-weight: 600;
-    font-size: 14px;
-}
-
-.top-container>.profile-status-box>.profile-content>.profile-balances{
+.balance-card{
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    padding: 5px;
-    margin-top: 5px;
+    grid-template-columns: repeat(1,1fr);
+    width: 70%;
+    transform: translateX(15%);
+    margin-top: 20px;
+    padding: 15px;
+    background: linear-gradient(180deg,#4d5b9fc9,#4d5b9f4f), url('../pictures/landscape.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 13px;
     /*border: 1px solid red;*/
-    width: 85%;
-    margin-left: 15px;
-    background:#29325e8a;
-    border: none;
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
 }
 
-.top-container>.profile-status-box>.profile-content>.invoice-section-profile-balances{
-    background:#fff;
-    border: none;
-    border-radius: 8px;
-    backdrop-filter: blur(0);
+.balance-card> .copy-btn{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
 }
 
-.top-container>.profile-status-box>.profile-content>.profile-balances>.balances{
+.balance-card> .copy-btn>.copy{
+    font-size: 14px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 30px;
+    background-color: #4d5b9f8e;
+    color: #fff;
+    
+}
+
+
+.balance-card> .holder-name{
+    padding: 6px;
+    font-size: 15px;
+}
+
+.balance-card> .holder-name>h1{
+    font-size: 15px;
+    color: #fff;
+}
+
+.balance-card> .addr-section{
+    font-size: 10px;
+    padding: 6px;
+    color: #bfbfbf;
+    font-weight: 500;
+}
+
+.balance-card> .balance-section{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: left;
+    margin-top: 10px;
 }
 
-.top-container>.profile-status-box>.profile-content>.profile-balances>.balances>.balance-logo{
-    height: 40px;
-    width: 40px;
-    /*padding: 10px;*/
-    border-radius: 50%;
-    margin-right: 15px;
+.balance-card> .balance-section> .crypto-logo{
+    height: 30px;
+    width: 30px;
 }
 
-.top-container>.profile-status-box>.profile-content>.profile-balances>.balances>.balance-logo{
-    height: 35px;
-    width: 35px;
-    border-radius: 50%;
-    
+.balance-card> .balance-section> .crypto-logo> img{
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
 }
 
-.top-container>.profile-status-box>.profile-content>.profile-balances>.balances>.balance-logo>img{
-    height: 35px;
-    width: 35px;
-    border-radius: 50%;
-    object-fit: contain;
-}
-
-.top-container>.profile-status-box>.profile-content>.profile-balances>.balances>.balance-value{
-   color: #fff;
-   font-size: 12px;
-   margin-right:2px ;
-}
-
-.top-container>.profile-status-box>.profile-content>.invoice-section-profile-balances>.balances>.balance-value{
-    
-    color: #666;
-    
-}
-
-.top-container>.profile-status-box>.profile-content>.invoice-details-section{
-    color: #929292;   
-    margin-left: 24px;
-    word-wrap: break-word;
-    font-size: 10px;
-    font-weight: 500;
-    /*border: 1px solid red;*/
-    width: fit-content;
-}
-
-.top-container>.profile-status-box>.profile-content>.company-address>#companyAddr{
-    font-size: 16px;
-    padding: 10px;
-    padding-left: 0;
-}
-
-.top-container>.profile-status-box>.profile-content>.company-address{
-    color: #fff;
-}
-
-.top-container>.profile-status-box>.profile-content>.company-name>a{
-    text-decoration: none;
-    color: #fff;
-}
-
-.top-container>.profile-status-box>.logo-image-container{
-    /*border: 1px solid red;*/
-    height: 50px;
-    width: 50px;
+.balance-card> .balance-section> .crypto-balance{
     margin-left: 15px;
+    color: #fff;
 }
 
-.top-container>.profile-status-box>.logo-image-container>img{
-    height: 50px;
+.balance-card> .bottom-logo{
+    /*border: 1px solid red;*/
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.balance-card> .bottom-logo> .bottom-logo-container{
+    height: 30px;
+    width: 50px;
+    /*border: 1px solid red;*/
+}
+
+.balance-card> .bottom-logo> .bottom-logo-container>img{
+    height: 30px;
     width: 50px;
     object-fit: contain;
 }
 
-
-
-.heading-bars{
-    width: 80%;
-    transform: translateX(10%);
-    margin-top: 15px;
-    margin-bottom: 20px;
-}
-
-.heading-bars>h2{
-    color: #444;
-    font-weight: 600;
-    font-size: 28px;
-}
-
-.heading-bars>p{
-    font-size: 14px;
-    font-weight: 500;
-    color: #333;
-}
-
-
-.form-container{
-    width: 100%;
-    background-color: #fff;
-    margin: 0;
-}
-
-.form-container>.form-header{
-    padding-top: 10px;
-    padding-bottom: 10px;
-    width: 100%;
-    height: 120px;
-    text-align: center;
-    background:linear-gradient(30deg, #0f1327b4,#061450a4),url('../pictures/form-background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.form-container> .form-header>p{
-    font-weight: 600;
-    font-size: 25px;
-    color: #fff;
-}
-
-.form-container>form{
-    padding: 10px;
-    /*border: 1px solid #333;*/
-    width: 80%;
-    transform: translateX(10%);
-    margin-top:5%;
-}
-
-.form-container>form>.form-section{
-    padding: 15px;
-}
-
-.form-container>form>.form-section>label{
-    font-weight: 500;
-    font-size: 16px;
-    color: #4D5A9F;
-}
-
-.form-container>form>.form-section>input{
-    outline: none;
-    border: none;
-    border-radius: 8px;
-    margin-top: 10px;
-    font-size: 14px;
-    font-family: "Montserrat", sans-serif;
-    background-color: #f3f3f3;
-    padding: 15px 10px;
-    font-weight: 500;
+.list-profile-currencies{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
     width: 90%;
-    color: #555;
+    margin-top: 25px;
+    /*border: 1px solid red;*/
+    transform: translateX(5%);
 }
 
+.list-profile-currencies> .currency-value{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 
-.form-container>form>.form-section>select{
-    outline: none;
+.list-profile-currencies> .currency-value> .currency-image{
+    height: 22px;
+    width: 22px;
     border: none;
-    border-radius: 8px;
-    font-weight: 500;
-    padding: 15px;
-    font-size: 14px;
-    font-family: "Montserrat", sans-serif;
-    background-color: #f3f3f3;
-    margin-top: 15px;
+    border-radius: 50%;
+
+}
+
+.list-profile-currencies> .currency-value> .currency-image>img{
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 14px;
+}
+
+.list-profile-currencies> .currency-value>p{
+    margin-left: 25px;
+    color: #888;
+    font-size: 12px;
+}
+
+.page-nav{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
     width: 90%;
-    color: #555;
+    transform: translateX(5%);
+    /*border: 1px solid red;*/
+    margin-top: 20px;
 }
 
-.form-container>form>.form-section>button{
+.page-nav> .page{
+    padding-top:12px;
+    padding-bottom: 12px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.page-nav> .page> .page-logo{
+    margin-left: 10px;
+}
+
+.page-nav> .page>  p{
+    margin-left: 14px;
+    font-size: 10px;
+}
+
+.page-nav> .page> span{
+    margin-left: 6px;
+    height: 12px;
+    width: 10px;
     border: none;
-    color: #fff;
-    background-color: #4D5A9F;
-    border-radius: 9px;
-    font-size: 18px;
-    font-family: "Montserrat", sans-serif;
-    width: 100%;
-    padding: 15px;
-    font-weight: 500;
-    margin-bottom: 20px;
-}
-
-.important-sign{
-    color: #e98b8b;
-}
-
-.invoice-container{
-    height: 100vh;
-    width: 100%;
-    background-color: #fff;
-}
-
-.invoice-container>.image-container{
-    height: 120px;
-    width: 120px;
-    transform: translate(35vw,25vh);
-}
-
-.invoice-container>.image-container>img{
-    height: 120px;
-    width: 120px;
-    object-fit: contain;
-}
-
-.invoice-container>.text{
-    text-align: center;
-    width: 80%;
-    transform: translateX(10%);
-    padding: 10px;
-    margin-top: 30vh;
-}
-
-.invoice-container>.text>h2{
-    font-size: 20px;
-    font-weight: 800;
-    color: #4D5A9F;
-}
-
-.invoice-container>.text>p{
-    text-align: center;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 2rem;
-    color: #444;
-}
-
-.invoice-container>.text>a{
-    text-decoration: none;
-}
-
-.invoice-container>.text>a>button{
-    text-align: center;
-    font-size: 16px;
-    font-weight: 500;
+    border-radius: 2px;
     background-color: #4D5A9F;
     color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    width: 50%;
-    transform: translateX(6%);
+    text-align: center;
+    font-size: 12px;
+    padding: 2px;
 }
 
-.seller{
-    background: url('../pictures/form-background.png');
-    background-size: cover;
-    height: 80vh;
-    width: 90vw;
-    overflow-x: hidden;
-    transform: translateX(-5%);
-    margin-top: 30px;
-    margin-bottom: 0;
-    border: none;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+.page-nav> .page> .page-logo{
+    height: 20px;
+    width: 20px;
 }
 
-.seller>p{
-    color: #fff;
-    font-size: 23px;
+.page-nav> .page> .page-logo>img{
+    height: 20px;
+    width: 20px;
+    object-fit: cover;
 }
 
-.seller-box{
-    background: url('../pictures/form-background.png');
-    background-size: cover;
-    height: 80vh;
-    width: 90vw;
-    overflow-x: hidden;
-    transform: translateX(-5%);
-    margin-top: 30px;
-    margin-bottom: 0;
-    border: none;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    
-}
-
-.seller-box>p{
-    color: #fff;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 12px;
-}
-
-.fa-bars{
-    color: #fff;
-    font-size: 16px;
-}
-
-.check-out-container{
-    /*border: 1px solid #ccc;*/
-    border-radius: 12px;
-    width: 70%;
-    transform: translate(15%,-54vh);
-    position: absolute;
-    padding: 10px;
-    
-}
-
-.check-out-container> form> .form-section{
-    margin-bottom: 12px;
-}
-
-.check-out-container> form> .form-section>label{
-    font-size: 13px;
-    font-weight: 600;
-    color: #555;
-    font-family: "Montserrat", sans-serif;
-}
-
-.check-out-container> form> .form-section>select{
+.invoices-container{
+    /*border: 1px solid red;*/
+    width: 85%;
+    transform: translateX(10%);
     margin-top: 10px;
-    border: none;
-    width: 100%;
+}
+
+.invoices-container>h2{
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-right: 10px;
-    padding-left: 10px;
-    outline: none;
-    font-size: 10px;
-    font-family: "Montserrat", sans-serif;
-    background-color: #f8f8f8;
-    border-radius: 10px;
-    font-weight: 500;
-    text-transform: lowercase;
-    color: #444;
-    border: 1px solid #ccc;
-    appearance: none;
-}
-
-.check-out-container> form> .form-section>input{
-    margin-top: 10px;
-    border: none;
-    width: 90%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-    padding-left: 10px;
-    outline: none;
-    font-size: 10px;
-    font-family: "Montserrat", sans-serif;
-    background-color: #e2e2e2;
-    border-radius: 10px;
-    font-weight: 500;
-    text-transform: lowercase;
-    color: #444;
-    border: none;
-}
-
-.check-out-container> form> .form-section>button{
-    margin-top: 10px;
-    border: none;
-    width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-    padding-left: 10px;
-    outline: none;
+    color: #4D5A9F;
     font-size: 15px;
-    font-family: "Montserrat", sans-serif;
-    background-color: rgb(60, 194, 127);
-    border-radius: 10px;
-    font-weight: 500;
-    color: #fff;
-    border: none;
+    font-weight: 700;
 }
 
+.invoices-container> .paid-invoices-list{
+    display: grid;
+    grid-template-columns: 20% 20% 60%;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin-top: 10px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
 
+.invoices-container> .paid-invoices-list> div{
+    /*border: 1px solid red;*/
+    font-size: 10px;
+    font-weight: 500;
+    text-wrap: wrap;
+    color: #888;
+}
 
+.invoices-container> .paid-invoices-list> .sent-icon>img{
+    height: 20px;
+    width: 20px;
+    transform: translateX(100%);
+    object-fit: cover;
+}
 
+.upload-form-container{
+    /*border: 1px solid red;*/
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    transform: translateX(13%);
+    margin-bottom: 40px;
+    margin-top: 10px;
+}
+
+.upload-form-container> div{
+    text-align: center;
+}
+
+.upload-form-container> .upload-btn> .upload-icon{
+    height: 120px;
+    width: 120px;
+    transform: translateX(20vw);
+    /*border: 1px solid red;*/
+}
+
+.upload-form-container> .upload-btn> .upload-icon>img{
+    height: 120px;
+    width: 120px;
+    
+    object-fit: cover;
+}
+
+.upload-form-container> .upload-btn> p{
+    width: 70%;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #888;
+    transform: translateX(25%);
+}

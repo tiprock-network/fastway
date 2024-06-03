@@ -20,7 +20,7 @@
 
 <body>
     
-    <div class="top-container invoice-cover-bg">
+    <div class="top-container invoice-cover-bg" id="tpContainer">
         <div class="top-area">
             <div class="menu">
                 <i class="fa fa-bars" style="color:#4D5A9F;"></i>
@@ -33,6 +33,12 @@
                 <p><i class="fa fa-circle-check"></i> 0x1..B9</p>
             </div>
         </div>
+
+        <div class="search-container">
+            <input type="search" name="search" id="search" placeholder="Type company name">
+            
+        </div>
+        
         
         <% if(companiesList){ %>
             <% companiesList.forEach((company)=>{ %>
@@ -54,12 +60,12 @@
                         <div class="profile-balances  invoice-section-profile-balances">
                             <div class="balances">
                                 <div class="balance-logo"><img src="/pictures/celo.jpeg" alt=""></div>
-                                <div class="balance-value">CELO <%= 0.00 %></div>
+                                <div class="balance-value">CELO</div>
                             </div>
         
                             <div class="balances">
                                 <div class="balance-logo"><img src="/pictures/cusd.png" alt=""></div>
-                                <div class="balance-value">$ <%= 0.00 %></div>
+                                <div class="balance-value">cUSD</div>
                             </div>
                         </div>
 
@@ -73,20 +79,81 @@
             
         <% }else{ %>
         <% } %>
+        
     </div>
 
    <script>
-       /* const company_address = document.getElementById('companyAddr').innerHTML
-        const copyContent = async () => {
-        try {
-            await navigator.clipboard.writeText(company_address);
-            alert('Content copied to clipboard');
-            } catch (err) {
-            alert('Failed to copy: ', err);
-        }
+       const company_cards = document.getElementsByClassName('companies-status-box')
+       const cards_container = document.getElementById('tpContainer')
+       const searchBar = document.getElementById('search')
+
+       searchBar.addEventListener('search', async ()=>{
+            deleteCurrentCards() //deletes current company cards
+            //use fetch to get the data from the endpoint
+            const URL = 'http://localhost:5001/api/celo/dapp/v1.0/fastway_token/fetch/getcompanies'
+            const response = await fetch(URL,{
+                method:'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body:JSON.stringify({searchText:searchBar.value})
+            })
+
+            let data = await response.json()
+            console.log(data.results)
+
+            //display data
+            data.results.forEach((company) => {
+                cards_container.innerHTML += `
+                <div class="profile-status-box companies-status-box">
+                   
+                   <div class="profile-content">
+                       <div class="profile-name company-name">
+                           <a href="/app/fastway/list/companies/account/pay/${company.address}">
+                               ${company.firstName} ${company.lastName}
+                           </a>
+                       </div>
+
+                       <div class="invoice-details-section company-address">
+                           <p id="companyAddr" ><i class="fa fa-copy"></i> ${(company.walletAddress
+).slice(0,9)}...${ (company.walletAddress
+).slice(-2)}</p>
+                           <p>${company.userEmail}</p>
+                       </div>
+
+
+                       <div class="profile-balances  invoice-section-profile-balances">
+                           <div class="balances">
+                               <div class="balance-logo"><img src="/pictures/celo.jpeg" alt=""></div>
+                               <div class="balance-value">CELO</div>
+                           </div>
+       
+                           <div class="balances">
+                               <div class="balance-logo"><img src="/pictures/cusd.png" alt=""></div>
+                               <div class="balance-value">cUSD</div>
+                           </div>
+                       </div>
+
+                       
+
+
+                   </div>
+               </div>
+                `
+            })
+            
+
+       })
+
+       function deleteCurrentCards(){
         
-     }
-     copyContent()*/
+            let num = company_cards.length
+
+            for(i=0;i<num;i++){
+                    company_cards[i].style.display = "none";
+            }
+       }
+       
    </script> 
    
 </body>

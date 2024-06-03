@@ -87,6 +87,7 @@ app.get(`${baseURL_endpoint}/checkbalance`, async (req,res) => {
 app.use(`${baseURL_endpoint}/accounts`,require('./routes/handle_account_dev'))
 app.use(`${baseURL_endpoint}/transactions`,require('./routes/handle_transactions_dev'))
 app.use(`${baseURL_endpoint}/contract/details`,require('./routes/contract_route'))
+app.use(`${baseURL_endpoint}/fetch`,require('./routes/retrieveCompanies'))
 //Production Endpoints
 //1. Endpoint for AI and ML services
 //post invoice details

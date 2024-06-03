@@ -9,110 +9,154 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Moirai+One&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,500;1,600;1,700;1,800;1,900&family=Pacifico&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/912e452282.js" crossorigin="anonymous"></script>
+    
 </head>
 <body>
+    <div class="header">
+        <div class="logo"><img src="/pictures/fastway-logo.png" alt="" srcset=""></div>
+    </div>
+
+    <div class="balance-card">
+        <div class="copy-btn">
+            <button class="copy">Copy</button>
+        </div>
+
+        <div class="holder-name" id="holderPlacer">
+            <h1>Mark Jordan John</h1>
+        </div>
+
+        <div class="addr-section" id="addressBox">
+            0xA904934390RN4930232as33P
+        </div>
+
+        <div class="balance-section">
+            <div class="crypto-logo"><img src="/pictures/cusd.png" alt="" srcset=""></div>
+            <div class="crypto-balance"><p>$ 45.12</p></div>
+        </div>
+
+        <div class="bottom-logo">
+            <div class="bottom-logo-container">
+                <img src="/pictures/fastway-logo-white.png" alt="" srcset="">
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="list-profile-currencies">
+        <div class="currency-value">
+            <div class="currency-image"><img src="/pictures/kenya.png" alt=""></div>
+            <p>KES 5865.20</p>
+        </div>
+
+        <div class="currency-value">
+            <div class="currency-image"><img src="/pictures/cEUR.png" alt=""></div>
+            <p>cEUR 41.74</p>
+        </div>
+
+        <div class="currency-value">
+            <div class="currency-image"><img src="/pictures/cusd.png" alt=""></div>
+            <p>cUSD 45.12</p>
+        </div>
+    </div>
+
+    <div class="page-nav">
+        <div class="page">
+            <div class="page-logo"><img src="/pictures/online-shop.png" alt=""></div>
+            <p>Businesses</p>
+        </div>
+
+        <div class="page">
+            <div class="page-logo"><img src="/pictures/bill.png" alt=""></div>
+            <p>Invoices</p>
+            <span>0</span>
+        </div>
+
+        <div class="page">
+            <div class="page-logo"><img src="/pictures/poor.png" alt=""></div>
+            <p>Payments</p>
+        </div>
+    </div>
+
+    <div class="invoices-container">
+        <h2>Paid Invoices</h2>
+        <div class="paid-invoices-list">
+            <div class="sent-icon">
+                <img src="/pictures/direct.png" alt="">
+            </div>
+            <div class="amount-sent"><p>$ 236.48 </p></div>
+            <div class="transaction-desc">
+                <p>sent to Bumblebee Inc. @ 2:47 pm</p>
+            </div>
+        </div>
+
+        <div class="paid-invoices-list">
+            <div class="sent-icon">
+                <img src="/pictures/direct.png" alt="">
+            </div>
+            <div class="amount-sent"><p>$ 58.00 </p></div>
+            <div class="transaction-desc" id="transBox">
+                <p>sent to Fun Fair Group @ 7:36 am</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="upload-form-container">
+        <div class="upload-header">Add Invoice</div>
+        <div class="upload-btn" id="uploadBtn">
+            <div class="upload-icon">
+                <img src="/pictures/image-gallery.png" alt="">
+            </div>
+            <p>Press here to upload your .png, .jpeg, .jpg or .pdf file.</p>
+        </div>
+    </div>
+
+    <script type="module">
+        import { getContract, createWalletClient, createPublicClient, formatEther, custom, http } from 'https://cdn.jsdelivr.net/npm/viem@2.13.2/+esm';
+        import { celo } from 'https://cdn.jsdelivr.net/npm/viem@2.13.2/chains/+esm';
+        import { stableTokenABI } from 'https://cdn.jsdelivr.net/npm/@celo/abis@11.0.0/+esm';
     
-    <div class="top-container">
-        <div class="top-area">
-            <div class="menu">
-                <i class="fa fa-bars"></i>
-            </div>
-            <div class="wallet-balance">
-                <p class="balance-box">$ <%= balances.cUSD_Bal %> cUSD</p>
-            </div>
-            <div class="wallet-address">
-                <p><i class="fa fa-circle-check"></i> <%= walletAddr %></p>
-            </div>
-        </div>
-
-        <div class="profile-status-box">
-            <div class="logo-image-container">
-                <img src="/pictures/logo.png" alt="">
-            </div>
-            <div class="profile-content">
-                <div class="profile-name">Hi, <%= person.firstName %></div>
-
-                <div class="profile-balances">
-                    <div class="balances">
-                        <div class="balance-logo"><img src="/pictures/celo.jpeg" alt=""></div>
-                        <div class="balance-value">CELO <%= balances.CELO_Bal %></div>
-                    </div>
-
-                    <div class="balances">
-                        <div class="balance-logo"><img src="/pictures/cusd.png" alt=""></div>
-                        <div class="balance-value">$ <%= balances.cUSD_Bal %></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--needs to be a partial-->
-    <div class="flash-message">
-        <% if(messages.error && messages.error.length>0){ %>
-            <% messages.error.forEach((err)=>{ %>
-                <div class="error-msg">
-                    <i class="fa fa-circle-exclamation"></i> <%= err %>
-                </div>
-            <% }) %>
-            
-        <% } %>
-
-        <% if(messages.success && messages.success.length>0){ %>
-            <% messages.success.forEach((msg)=>{ %>
-                <div class="success-msg">
-                    <i class="fa fa-circle-exclamation"></i> <%= msg %>
-                </div>
-            <% }) %>
-        <%}%>
-    </div>
-
+        const STABLE_TOKEN_ADDRESS = "0x765DE816845861e75A25fCA122bb6898B8B1282a";
     
+        document.addEventListener('DOMContentLoaded', async () => {
+            const addressBox = document.getElementById('addressBox');
+            const holderPlacer = document.getElementById('holderPlacer');
+    
+            // Create a wallet client
+            const client = createWalletClient({
+                chain: celo,
+                transport: custom(window.ethereum),
+            });
+    
+            // Get the connected wallet address
+            const [address] = await client.getAddresses();
+            addressBox.innerText = address;
+    
+            async function checkCUSDBalance(myclient, address) {
+                let StableTokenContract = getContract({
+                    abi: stableTokenABI,
+                    address: STABLE_TOKEN_ADDRESS,
+                    myclient
+                });
 
-    <div class="logo-container">
-       <%if(person.customerType=="buyer"){%>
-        <div class="logo-head">
-          
-        </div>
-        <div class="logo-text">
-            <form action="/app/fastway/invoice-processing" method="POST" enctype="multipart/form-data">
-                <div class="custom-file-label" id="customFileLabel">
-                    <h1><i class="fa fa-file-circle-plus"></i></h1>
-                    <p>Invoice - .png, .pdf, .jpg</p>
-                </div>
-                <input type="file" name="invoice_form" id="invoice_form">
-                <button type="submit">Process</button>
-            </form>
-        </div>
-       <%}else{%>
-            <div class="logo-head seller">
+                let balanceInBigNumber = await StableTokenContract.read.balanceOf([
+                    address
+                ]);
 
-            </div>
-       <%}%>
-    </div>
+                let balanceInWei = balanceInBigNumber.toString();
 
-    <script>
-        document.getElementById('customFileLabel').addEventListener('click', function() {
-            document.getElementById('invoice_form').click();
-        });
+                let balanceInEthers = formatEther(balanceInWei);
 
-        document.getElementById('invoice_form').addEventListener('change', function() {
-            const fileName = this.files[0] ? this.files[0].name : 'No file chosen'
-           //check for return 
-           if(fileName==='No file chosen'){
-            document.getElementById('customFileLabel').innerHTML = 
-            `
-                    <h1><i class="fa fa-circle-xmark" style="color:#ffb3b3;"></i></h1>
-                    <p>${fileName}.</p> 
-            `;
-           }else{
-            document.getElementById('customFileLabel').innerHTML = 
-            `
-                    <h1><i class="fa fa-circle-check"></i></h1>
-                    <p>${fileName} chosen.</p> 
-            `;
-           }
+                return balanceInEthers;
+            }
+
+            alert(checkCUSDBalance(client,address))
+
+                        
         });
     </script>
+    
+    
+    
 </body>
 </html>
